@@ -1,26 +1,23 @@
 <template>
     <div class="lightbox" @click.self="closeLightbox">
   
-      <img :src="photoUrl(photo.filename)">
+      <img :src="chosenImage.url">
   
       <div class="lightbox-info">
         <div class="lightbox-info-inner">
-            <p v-if="photo.title">{{ photo.title }}</p>
-
+            <!--<p v-if="photo.title">{{ photo.title }}</p>
             <p v-if="photo.location">{{ photo.location }}</p>
-
             <p v-if="photo.photographer">
             <a rel="nofollow" :href="photo.photographer.url">
                 {{ photo.photographer.name }}
             </a>
             </p>
-
             <p v-if="photo.source">
             via
             <a rel="nofollow" :href="photo.source.url">
                 {{ photo.source.name }}
             </a>
-            </p>
+            </p>-->
 
         </div>
       </div>
@@ -28,35 +25,7 @@
     </div>
 </template>
  
-<script>
-
-import photos from '@/photos.json'
-
-export default {
-    name: 'Photo',
-    data() {
-        return {
-            photos
-        }  
-    },
-    computed: {
-        photo() {
-            return this.photos.find((photo) => {
-                return photo.id === Number(this.$route.params.id)
-            })
-        }
-    },
-    methods: {
-        photoUrl(filename) {
-            return require(`../assets/images/${filename}`)
-        },
-        closeLightbox() {
-            this.$router.push('/');
-        }
-    }
-}
-
-</script>
+<script lang="ts" src="./Photo.ts"></script>
 
 <style>
   .lightbox {

@@ -1,32 +1,14 @@
 <template>
     <div class="gallery">
-      <div class="gallery-panel"
-           v-for="photo in photos"
-           :key="photo.id">
-        <router-link :to="`/photo/${photo.id}`">
-            <img :src="thumbUrl(photo.filename)">
+      <div class="gallery-panel" v-for="thumbnail in thumbnails" :key="thumbnail.name">
+        <router-link :to="`/photo/${thumbnail.name}`">
+            <img :src="thumbnail.url">
         </router-link>
       </div>
     </div>
-  </template>
+</template>
   
-<script>
-import photos from '@/photos.json'
-
-export default {
-    name: 'Gallery',
-    data() {
-        return {
-            photos,
-        }
-    },
-    methods: {
-        thumbUrl(filename) {
-            return require(`../assets/images/thumbnails/${filename}`)
-        }
-    }
-}
-</script>
+<script lang="ts" src="./Gallery.ts"></script>
 
 <style>
     .gallery {

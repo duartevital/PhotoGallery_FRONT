@@ -9,7 +9,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/photo/:id',
+    path: '/photo/:name',
     name: 'photo',
     component: Photo,
   },
